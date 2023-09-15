@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +37,18 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+        }
+        else if (collision.gameObject.CompareTag("Spikes"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
