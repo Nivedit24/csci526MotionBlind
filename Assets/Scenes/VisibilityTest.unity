@@ -2145,9 +2145,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1713670249}
+  spotlightOffsetX: 0
+  spotlightOffsetY: 25
   spotlightSizeMoving: 100
   spotlightSizeIdle: 700
-  slowShrink: 1
+  shrinkSpeed: 0.1
+  expandSpeed: 0.1
+  slowShrink: 0
+  slowShrinkSpeed: 0.001
+  slowExpand: 0
+  slowExpandSpeed: 0.001
+  minVelocityForShrink: 0
 --- !u!1001 &1297475300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2845,7 +2853,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1713670253
 BoxCollider2D:
   m_ObjectHideFlags: 0
