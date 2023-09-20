@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
     private Rigidbody2D playerRb;
+
+    public Text winningText;
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        winningText.gameObject.SetActive(false);
     }
 
     public float horizontalInput;
@@ -42,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        else if (collision.gameObject.CompareTag("Respawn"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -49,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            winningText.gameObject.SetActive(true);
         }
     }
 }
