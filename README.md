@@ -1,1 +1,1 @@
-# csci526FrozenGame
+# csci526MotionBlind
