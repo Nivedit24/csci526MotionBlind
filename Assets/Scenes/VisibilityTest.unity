@@ -3141,10 +3141,10 @@ MonoBehaviour:
   player: {fileID: 1713670249}
   spotlightOffsetX: 0
   spotlightOffsetY: 0
-  spotlightSizeMoving: 100
+  spotlightSizeMoving: 70
   spotlightSizeIdle: 700
   shrinkSpeed: 0.1
-  expandSpeed: 0.1
+  expandSpeed: 0.001
   slowShrink: 1
   slowShrinkSpeed: 0.01
   slowExpand: 1
@@ -3836,7 +3836,7 @@ GameObject:
   - component: {fileID: 1488106411}
   m_Layer: 0
   m_Name: Blocks
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4318,7 +4318,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.6886792, g: 0.19166073, b: 0.4801343, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4336,7 +4336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713670249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -604.9, y: -66, z: 0}
+  m_LocalPosition: {x: -618, y: -66, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4404,9 +4404,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winningText: {fileID: 825896755}
   horizontalInput: 0
-  jumpForce: 100
-  speed: 50
---- !u!1 &1735431397 stripped
+  jumpForce: 120
+  speed: 70
+  health: 3
+--- !u!1 &1765405040
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1796566160593736215, guid: c13f7e0a89e9a425aa4652f60cd04bc8, type: 3}
   m_PrefabInstance: {fileID: 404751474}
