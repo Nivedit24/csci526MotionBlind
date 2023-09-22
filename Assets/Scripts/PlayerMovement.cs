@@ -19,19 +19,27 @@ public class PlayerMovement : MonoBehaviour
 
     public float horizontalInput;
     public float jumpForce = 120.0f;
-    private bool isGrounded = false;
+    private bool canJump = false;
+    private bool isMovementObstructedFromLeft = false;
+    private bool isMovementObstructedFromRight = false;
     public float speed = 70.0f;
     public int health = 3;
 
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+        if ((isMovementObstructedFromLeft && horizontalInput > 0f)
+            || (isMovementObstructedFromRight && horizontalInput < 0f))
+        {
+            horizontalInput = 0f;
+        }
+
         playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
 
-        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
+        if (canJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
+            canJump = false;
         }
     }
 
@@ -39,15 +47,54 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            isGrounded = true;
+            canJump = true;
         }
-        else if (collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Enemy"))
+
+        if (collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Enemy"))
         {
             DecreasePlayerHealth();
+            canJump = true;
         }
-        else if (collision.gameObject.CompareTag("Respawn"))
+
+        if (collision.gameObject.CompareTag("Respawn"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (collision.gameObject.CompareTag("Wall")
+            && collision.GetContact(0).normal.y < 0.9f // collision is not from below
+            && collision.GetContact(0).normal.y > -0.9f) // collision is not from above
+        {
+            if (collision.GetContact(0).normal.x > 0.9f)
+            {
+                isMovementObstructedFromRight = true;
+            }
+            else if (collision.GetContact(0).normal.x < -0.9f)
+            {
+                isMovementObstructedFromLeft = true;
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            canJump = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            canJump = false;
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isMovementObstructedFromLeft = false;
+            isMovementObstructedFromRight = false;
         }
     }
 
