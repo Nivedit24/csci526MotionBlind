@@ -11,7 +11,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "autoPublish",
-                "value": "{\"m_Value\":true}"
+                "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"/Users/niveditreddy/Developer/Games/csci526FrozenGame/WebGL Builds;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"/Users/nischal/Desktop/csci526MotionBlind/Build;/Users/nischal/Desktop/csci526MotionBlind/Builds/connectwebgl;/Users/nischal/Desktop/csci526MotionBlind/builds;/Users/nischal/Desktop/csci526MotionBlind/WebGL Builds;/Users/niveditreddy/Developer/Games/csci526FrozenGame/WebGL Builds;;;;;\"}"
             }
         ]
     }
