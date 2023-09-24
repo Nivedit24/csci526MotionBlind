@@ -5,7 +5,7 @@ public class FocusSpotlight : MonoBehaviour
     public GameObject player;
     public float spotlightOffsetX = 0f;
     public float spotlightOffsetY = 25f;
-    public float spotlightSizeMoving = 70f;
+    public float spotlightSizeMoving = 150f;
     public float spotlightSizeIdle = 700f;
     public float shrinkSpeed = 0.1f;
     public float expandSpeed = 0.2f;
