@@ -23,5 +23,11 @@ public class EnemyMovement : MonoBehaviour
         {
             speed = -speed;
         }
+
+        //Ignore collision with other enemies and spikes
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Spikes"))
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 }
