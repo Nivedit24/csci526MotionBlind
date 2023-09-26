@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class FocusSpotlight : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class FocusSpotlight : MonoBehaviour
         }
     }
 
+    void DecreaseIdleSpotlightSize()
+    {
+        spotlightSizeIdle = Math.Max(spotlightSizeIdle - 0.1f, spotlightSizeMoving + 50f);
+    }
+
     void LateUpdate()
     {
         // Follow x and y position of player, maintain z position
@@ -39,5 +45,10 @@ public class FocusSpotlight : MonoBehaviour
             player.transform.position.y + spotlightOffsetY,
             transform.position.z);
         UpdateSpotlightSize();
+    }
+
+    void FixedUpdate()
+    {
+        DecreaseIdleSpotlightSize();
     }
 }
