@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         FocusSpotlight focusSpotlight = spotlight.GetComponent<FocusSpotlight>();
-        focusSpotlight.spotlightSizeMoving -= 50f;
+        focusSpotlight.spotlightSizeMoving -= 30f;
         focusSpotlight.UpdateSpotlightSize();
     }
 }
