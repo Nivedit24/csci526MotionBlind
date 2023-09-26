@@ -8,12 +8,14 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRb;
+    private GameObject spotlight;
 
     public Text winningText;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        spotlight = GameObject.Find("Spotlight");
         winningText.gameObject.SetActive(false);
     }
 
@@ -22,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump = false;
     private bool isMovementObstructedFromLeft = false;
     private bool isMovementObstructedFromRight = false;
-    public float speed = 70.0f;
+    public float speed = 75.0f;
     public int health = 3;
 
     void Update()
@@ -128,10 +130,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        GameObject spotlight = GameObject.Find("Spotlight");
         FocusSpotlight focusSpotlight = spotlight.GetComponent<FocusSpotlight>();
-        focusSpotlight.spotlightSizeIdle -= 20f;
-        focusSpotlight.spotlightSizeMoving -= 20f;
+        focusSpotlight.spotlightSizeMoving -= 50f;
         focusSpotlight.UpdateSpotlightSize();
     }
 }
